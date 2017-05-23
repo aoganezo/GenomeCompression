@@ -18,4 +18,4 @@
 * Main() of computeLPF creates 2 arrays (prev less than and prev greater than) and builds them with prevSA_3.  
 
 ## Compression ##
-Compression.java is an algorithm based off the one discussed in "Compressing Genome Resequencing Data via the Maximal Longest Factor" by Richard Beal, Aliya Farheen, and Don Adjeroh.
+Compression.java is an algorithm based off the one discussed in "Compressing Genome Resequencing Data via the Maximal Longest Factor" by Richard Beal, Aliya Farheen, and Don Adjeroh. See code for detailed comments. 
