@@ -1,8 +1,8 @@
-##__GenomeResequencing__
+# __GenomeResequencing__
 
 *PrevOcc = Previous Occurence, SA = Suffix Array
 
-##Previous Less Than and Previous Greater than Suffix Array
+# Previous Less Than and Previous Greater than Suffix Array
 
 PrevSA.java builds the PreviousLessThan SA and PreviousGreaterThan SA using a hashmap. The keys are the suffixes, with values of previous occurences. 
 
@@ -16,7 +16,7 @@ Creating the Suffix Array: The suffix array is created by getSA(String S) at the
 
 *__The rest of the files are configured to use PrevSA_3 as of latest updates. You may run into issues if you choose another one.__*
 
-##Computing Longest Previous Factor
+# Computing Longest Previous Factor
  *LPF = Longest Previous Factor
  
  This algorithm, as well as the ones described above, were developed based off the pseudo code from "Computing Longest Previous Factor in linear time and applications" by Maxime Crochemore and Lucian Ilie.
@@ -24,6 +24,6 @@ Creating the Suffix Array: The suffix array is created by getSA(String S) at the
  computeLPF.java returns An array of 2 arrays. The first is the LPF array and the second is the PrevOcc array.
  Main() of computeLPF creates 2 arrays (prev less than and prev greater than) and builds them with prevSA_3.  
  
- ##Compression
+ # Compression
  
 Compression.java is an algorithm based off the one discussed in "Compressing Genome Resequencing Data via the Maximal Longest Factor" by Richard Beal, Aliya Farheen, and Don Adjeroh
