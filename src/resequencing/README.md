@@ -7,10 +7,10 @@
 * PrevSA.java builds the PreviousLessThan SA and PreviousGreaterThan SA using a hashmap. The keys are the suffixes, with values of previous occurences. 
 
 * PrevSA_2.java builds the PreviousLessThan SA and PreviousGreaterThan SA using arrays. It stores only the prevOccs of each suffix in __lexicographic__ order of the suffixes. 
- * E.g. if SA is [c, bc, abc], the returned array stores the prevOcc of each SA[i] in the following order: [SA[2], SA[1], [SA[0]].
+   * E.g. if SA is [c, bc, abc], the returned array stores the prevOcc of each SA[i] in the following order: [SA[2], SA[1], [SA[0]].
 
 * PrevSA_3.java builds the PreviousLessThan SA and PreviousGreaterThan SA using arrays. It stores only the prevOccs of each suffix in __SA__ order. 
-  *E.g. if SA is [c, bc, abc], the returned array stores the prevOcc of each SA[i] in the following order: [SA[0], SA[1], [SA[2]].
+    * E.g. if SA is [c, bc, abc], the returned array stores the prevOcc of each SA[i] in the following order: [SA[0], SA[1], [SA[2]].
 
 * Creating the Suffix Array: The suffix array is created by getSA(String S) at the top of which ever PrevSA you're using. 
 
