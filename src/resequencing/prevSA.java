@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 
 /*
- * THIS CLASS RETURNS PREV ARRAYS IN HASHMAP FORM.
- * KEY = SUFFIX, VALUE = PREV_OCC
- * SORTED RANDOM AS PER HASHMAP FUNCTIONALITY.
+ * !!!USE PrevSA_3!!!
+ * 
+ * This class returns prev arrays in hashmap form.
+ * <key, value> = <suffix, prevOcc>
+ * Sorted random as per hashmap functionality.
  */
 public class prevSA {
 	static int lenAlpha;

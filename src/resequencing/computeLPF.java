@@ -10,7 +10,7 @@ public class computeLPF {
 		int[][] LPFAndPrevOcc = new int[2][size];
 		int j;
 		int k;
-		String[] test1 = PrevSA_3.getSA(w); //testing with the actual SA.
+		String[] test1 = PrevSA_3.getSA(w); //used at the bottom.
 		
 		LPF[0] = 0;
 		LPFless[0] = 0;
@@ -57,7 +57,8 @@ public class computeLPF {
 		LPFAndPrevOcc[1] = prevOcc;
 		
 		///* ***testing*** 
-		//testing with the actual SA (test1).
+		//Used to print suffixes with their LPFs and PrevOccs. Used for testing, method only returns
+		//the values of the LPF and PrevOcc arrays.
 		System.out.print("LPF: [");
 		for (int x = 0; x < LPF.length; x++) {
 			System.out.print(LPF[x]+":" + test1[x] + ", "); 
@@ -81,7 +82,7 @@ public class computeLPF {
 		int[] prevL = PrevSA_3.getPrevLessThan(w);
 		int[] prevG = PrevSA_3.getPrevGreaterThan(w);
 		
-		
+		//Uncomment to test if the prevLessThan and prevGreaterThan arrays are grabbed correctly.
 		/*System.out.print("prevL: [");
 		for (int y = 0; y < prevL.length; y++) {
 			System.out.print(prevL[y]+", "); 
@@ -95,8 +96,8 @@ public class computeLPF {
 		
 		computeLPF(w, prevL, prevG);
 		
-		/*
-		String rna1 = RunIt.testStuff();
+		//Uncomment this to test and time on a 19,000 long RNA string stored in rna1.txt
+		/*String rna1 = RunIt.testStuff();
 		long startTime   = System.currentTimeMillis();
 	
 		int[] prevL = PrevSA_3.getPrevLessThan(rna1);

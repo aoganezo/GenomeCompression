@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /*
- * THIS CLASS RETURNS PREV ARRAYS IN ARRAY FORM.
- * SORTED IN LEXICOGRAPHIC ORDER.
+ * !!!USE PrevSA_3!!!
+ * 
+ * This class returns prev arrays in array form.
+ * Sorted in lexicographically order.
  */
 
 
@@ -171,6 +173,8 @@ public class PrevSA_2 {
 		getPrevLessThan(alphabet);
 		getPrevGreaterThan(alphabet);
 		
+		
+		//Uncomment this to test and time on a 19,000 long RNA string stored in rna1.txt
 		/*String rna1 = RunIt.testStuff();
 		long startTime = System.currentTimeMillis();		
 		getPrevLessThan(rna1);

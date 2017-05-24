@@ -5,12 +5,13 @@ import java.util.HashMap;
 
 /*
  * THIS CLASS RETURNS PREV ARRAYS IN ARRAY FORM.
- * SORTED IN SA ORDER.
+ * SORTED IN SA ORDER (e.g. suffix lengths shortest to longest).
  * 
  * 
- * use hashmap hm from prevSA. make array x of size suffixArray.
- * Go through suffix array SA, and for each item in SA do x[item] = hm.getValue(item)
- * This returns the desired prevSA's.
+ * Makes the SA with getSA(). Uses a Hashmap to store suffixes from SA with their prevOccs. 
+ * Makes an array prev of size suffixArray. Goes through SA, and for each item in SA do:
+ * prev[item] = Hashmap.getValue(item)
+ * Then return prev for the desired prevSA's (whether it's the lessThan or greaterThan).
  */
 
 public class PrevSA_3 {
@@ -20,16 +21,15 @@ public class PrevSA_3 {
 		//creates array of the alphabet's size
 		String[] suffixArray = new String[lenAlpha];
 		
-		//prints the alphabet
+		//prints the alphabet. Testing purposes. 
 		System.out.println("String: " + alphabet);
 		
-		//loops through the alphabet, assigning the string with one less
-		//character in front each time. Creates the suffix Array.
+		//Creates the suffix Array. Builds it one suffix at a time longest to shortest
 		for (int i = 0; i < lenAlpha; i++) {
 			suffixArray[i] = alphabet.substring(i, lenAlpha);
 		}
 		
-		//testing only.
+		//Prints the suffix array. testing only.
 		/*System.out.print("SA: [");
 		for (int i = 0; i < lenAlpha; i++) {
 			System.out.print(suffixArray[i]+", ");
@@ -50,32 +50,31 @@ public class PrevSA_3 {
 		//sorts the new SA lexicographically		
 		Arrays.sort(sortedArray);
 		
-		//testing only
+		//Prints the lexicographically sorted SA. Testing only.
 		System.out.print("sorted SA: [");
 		for (int i = 0; i < lenAlpha; i++) {
 			System.out.print(sortedArray[i]+", ");
 		}
 		System.out.println("]");
 	
-		//creates a dictionary/HashMap of key,
-		//values that are <suffix, prevOcc>
+		//creates a dictionary/HashMap of key,values that are <suffix, prevOcc>
 		HashMap<String, Integer> prevLessThan = new HashMap<String, Integer>();
 		
-		//The first < prev occurrence is always -1
+		//The first <prev occurrence is always -1
 		prevLessThan.put(sortedArray[0], -1);
 		
-		//the previous occurrence var to be used
+		//the previous occurrence variable to be used
 		int prevOcc;
 		
-		//track the longest current string
+		//tracks the longest current string
 		int currLong = sortedArray[0].length();
 		
-		//find the prev occurrence of each one
+		//finds the prev occurrence of each suffix.
 		for (int i = 1; i < lenAlpha; i++) {
+			//always initialize to -1 in case we don't find a previous occurrence.
 			prevOcc = -1;
 			
-			//if we found the longest current suffix,
-			//it can't be the suffix of anything.
+			//if we found the longest current suffix, it can't be the suffix of anything, so skip the rest.
 			if (sortedArray[i].length() > currLong) {
 				prevLessThan.put(sortedArray[i], prevOcc);
 				currLong = sortedArray[i].length();
@@ -93,7 +92,7 @@ public class PrevSA_3 {
 			}
 		}
 		
-
+		//puts prevOccs into an SA sorted array (shortest to longest).
 		int[] prevLessThanSA = new int[lenAlpha];
 		int ct = 0;
 		for (String s: suffixArray) {
@@ -101,7 +100,7 @@ public class PrevSA_3 {
 			ct++;
 		}
 		
-		//puts prevOccs into an SA sorted array.
+		//prints the previousLessThan (that is, their prevOccs). Testing only. 
 		System.out.print("prevLessThanSA: [");
 		for (int x = 0; x < prevLessThanSA.length; x++) {
 			System.out.print(prevLessThanSA[x]+", "); 
@@ -123,30 +122,28 @@ public class PrevSA_3 {
 		//sorts the new SA lexicographically		
 		Arrays.sort(sortedArray);
 		
-		/*//testing only
+		/* Prints the sorted Suffix array. //testing only
 		System.out.print("sorted SA: [");
 		for (int i = 0; i < lenAlpha; i++) {
 			System.out.print(sortedArray[i]+", ");
 		}
 		System.out.println("]");*/
 		
-		//creates a dictionary/HashMap of <key,
-		//values> that are <suffix, prevOcc>
+		//creates a HashMap of <key, values> that are <suffix, prevOcc>
 		HashMap<String, Integer> prevGreaterThan = new HashMap<String, Integer>();
 		
-		//The last > prev occurrence is always -1
+		//The last >prev occurrence is always -1
 		prevGreaterThan.put(sortedArray[lenAlpha-1], -1);
 
 		//the previous occurrence var to be used
 		int prevOcc;
 				
-		//find the prev occurrence of each one
+		//Finds the prev occurrence of each suffix.
 		for (int i = 0; i < lenAlpha-1; i++) {
 			prevOcc = -1;
 
-			//for each suffix go through SA backwards starting 
-			//at where you currently are to see when the
-			//current suffix was last a suffix.
+			//for each suffix go through SA backwards starting at where you
+			//currently are to see when the current suffix was last seen suffix.
 			for (int j = i+1; j < lenAlpha-1; j++) {
 				if(sortedArray[j].length() > sortedArray[i].length()) {
 					prevOcc = Arrays.asList(suffixArray).indexOf(sortedArray[j]);
@@ -154,8 +151,7 @@ public class PrevSA_3 {
 					break;
 				}
 			}
-			//if we didn't find anything longer, 
-			//the value is -1.
+			//if we didn't find it as the suffix of anything, the value is -1.
 			if (!prevGreaterThan.containsKey(sortedArray[i])){
 				prevGreaterThan.put(sortedArray[i], prevOcc);	
 			}
@@ -168,7 +164,7 @@ public class PrevSA_3 {
 			prevGreaterThanSA[ct] = prevGreaterThan.get(s); 
 			ct++;
 		}
-		
+		//Prints the prevGreaterThanSA. //Testing purposes.
 		System.out.print("prevGreaterThanSA: [");
 		for (int x = 0; x < prevGreaterThanSA.length; x++) {
 			System.out.print(prevGreaterThanSA[x]+", "); 
@@ -186,6 +182,7 @@ public class PrevSA_3 {
 		getPrevLessThan(alphabet);
 		getPrevGreaterThan(alphabet);
 		
+		//Uncomment this to test and time on a 19,000 long RNA string stored in rna1.txt 
 		/*long startTime = System.currentTimeMillis();
 		String rna1 = RunIt.testStuff();
 		getPrevLessThan(rna1);

@@ -10,6 +10,10 @@ import java.util.Map.Entry;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+/*
+ * Commented numbers pair with sections of compression algorithm discussed in
+ * "Compressing Genome Resequencing Data via the Maximal Longest Factor". 
+ */
 
 public class Compression {
 	static String compression(String R, String T) { //R = reference --- T = Target
@@ -82,7 +86,7 @@ public class Compression {
 					else { //else only W[P[i].pos...q-1] can be encoded
 						len_prime = q - P.get(i).getRight();
 					}
-					if (len_prime >= k) { //then it's too small for encoding //possibly reverse to >= and put else in here 
+					if (len_prime <= k) { //then it's too small for encoding //possibly reverse to >= and put else in here 
 						//go to 5c, aka i--
 					}
 					else { //else it's long enough to encode
@@ -146,7 +150,7 @@ public class Compression {
 	public static void main(String[] args) {
 		String r = "actg";
 		String t = "acccttaacggctgcaaatacgggtttac";
-		//System.out.println(t.substring());
+	
 		String result = compression(r,t);
 		System.out.println("result: " + result);
 	}
