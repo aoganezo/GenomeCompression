@@ -91,7 +91,7 @@ public class prevSA {
 			}
 		}
 		
-		//Display elements in an order I do not yet know.
+		//Display elements in random order because of how hashmaps work.
 		System.out.print("the prev< HashMap: {");
 		prevLessThan.forEach((k,v)-> System.out.print("(" + k + ", " + v + "),"));
 		System.out.print("}");
@@ -118,8 +118,7 @@ public class prevSA {
 		}
 		System.out.println("]");
 		
-		//creates a dictionary/HashMap of <key,
-		//values> that are <suffix, prevOcc>
+		//creates a dictionary/HashMap of <key,values> that are <suffix, prevOcc>
 		HashMap<String, Integer> prevGreaterThan = new HashMap<String, Integer>();
 		
 		//The last > prev occurrence is always -1
@@ -142,8 +141,7 @@ public class prevSA {
 					break;
 				}
 			}
-			//if we didn't find anything longer, 
-			//the value is -1.
+			//if we didn't find anything longer, the value is -1.
 			if (!prevGreaterThan.containsKey(sortedArray[i])){
 				prevGreaterThan.put(sortedArray[i], prevOcc);	
 			}
